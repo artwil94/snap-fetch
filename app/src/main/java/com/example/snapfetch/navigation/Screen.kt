@@ -10,4 +10,7 @@ sealed class Screen {
 
     @Serializable
     data object PhotoDetails : Screen()
+
+    @Serializable
+    data object Splash : Screen()
 }

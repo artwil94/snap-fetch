@@ -7,5 +7,6 @@ data class SfDimensions(
     val paddingS: Dp = 8.dp,
     val padding: Dp = 16.dp,
     val paddingM: Dp = 24.dp,
-    val paddingL: Dp = 32.dp
+    val paddingL: Dp = 32.dp,
+    val splashAnimationSize: Dp = 200.dp
 )

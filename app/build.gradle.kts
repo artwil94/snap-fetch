@@ -78,6 +78,7 @@ dependencies {
     implementation(libs.converter.moshi)
     implementation(libs.coil.compose)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.lottie.compose)
     ksp(libs.hilt.compiler)
     ksp(libs.androidx.hilt.compiler)
     testImplementation(libs.junit)
