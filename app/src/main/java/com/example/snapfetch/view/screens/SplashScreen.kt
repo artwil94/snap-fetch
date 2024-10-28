@@ -41,7 +41,11 @@ fun SplashScreen() {
             contentScale = ContentScale.Fit,
         )
         if (animationProgress == ANIMATION_PROGRESS_FINISHED) {
-            navController.navigate(Screen.Photos)
+            navController.navigate(Screen.Photos) {
+                popUpTo(Screen.Splash) {
+                    inclusive = true
+                }
+            }
         }
     }
 }

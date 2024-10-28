@@ -20,21 +20,32 @@ class PhotosViewModel @Inject constructor(
     var uiState by mutableStateOf(PhotosUIState())
         private set
 
-    fun getPhotos() {
+    val actions = PhotosActions(
+        loadMore = {
+            getPhotos()
+        }
+    )
+    private var currentPage = 1
+
+    init {
+        getPhotos()
+    }
+
+    private fun getPhotos() {
         viewModelScope.launch {
             uiState = uiState.copy(
                 isLoading = true
             )
-            val result = repository.getPhotos()
+            val result = repository.getPhotos(page = currentPage, limit = PHOTOS_LIMIT)
             when (result) {
                 is Response.Success -> {
-                    result.data.let {
-                        uiState = uiState.copy(
-                            photos = result.data!!,
-                            isLoading = false,
-                            error = null
-                        )
-                    }
+                    val newPhotos = result.data ?: emptyList()
+                    uiState = uiState.copy(
+                        photos = uiState.photos + newPhotos,
+                        isLoading = false,
+                        error = null
+                    )
+                    currentPage++
                 }
 
                 is Response.Error -> {
@@ -47,7 +58,15 @@ class PhotosViewModel @Inject constructor(
             }
         }
     }
+
+    companion object {
+        const val PHOTOS_LIMIT = 20
+    }
 }
+
+data class PhotosActions(
+    val loadMore: () -> Unit
+)
 
 data class PhotosUIState(
     val isLoading: Boolean = true,

@@ -10,9 +10,12 @@ class PhotosRepositoryImpl @Inject constructor(
     private val photosApi: PhotosApi
 ) : PhotosRepository {
     override suspend fun getPhotos(
+        page: Int,
+        limit: Int
     ): Response<List<Photo>> {
         return try {
-            val result = photosApi.getPhotos().map { it.toEntity() }.requireNoNulls()
+            val result =
+                photosApi.getPhotos(page,limit).map { it.toEntity() }.requireNoNulls()
             Response.Success(
                 data = result
             )

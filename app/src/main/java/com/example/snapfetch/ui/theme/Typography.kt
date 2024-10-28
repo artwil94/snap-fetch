@@ -25,4 +25,11 @@ data class SfTypography(
         fontWeight = FontWeight(550),
         color = Color.White,
     ),
+    val actionButton: TextStyle = TextStyle(
+        fontSize = 16.sp,
+        lineHeight = 22.sp,
+        fontFamily = SfTheme.fonts.freigeistMedium,
+        fontWeight = FontWeight(550),
+        color = Color.Black
+    ),
 )

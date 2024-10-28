@@ -5,5 +5,5 @@ import com.example.snapfetch.util.Response
 
 interface PhotosRepository {
 
-    suspend fun getPhotos(): Response<List<Photo>>
+    suspend fun getPhotos(page: Int, limit: Int): Response<List<Photo>>
 }
