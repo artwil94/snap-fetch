@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -78,6 +76,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.converter.gson)
     implementation(libs.converter.moshi)
+    implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
     ksp(libs.androidx.hilt.compiler)
     testImplementation(libs.junit)

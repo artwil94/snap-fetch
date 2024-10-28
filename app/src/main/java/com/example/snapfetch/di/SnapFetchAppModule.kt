@@ -2,6 +2,8 @@ package com.example.snapfetch.di
 
 import com.example.snapfetch.BuildConfig
 import com.example.snapfetch.data.remote.PhotosApi
+import com.example.snapfetch.domain.repository.PhotosRepository
+import com.example.snapfetch.domain.repository.PhotosRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,4 +37,13 @@ object SnapFetchAppModule {
             .build()
             .create()
     }
+
+    @Provides
+    @Singleton
+    fun providePhotosRepository(
+        photoApi: PhotosApi,
+    ): PhotosRepository {
+        return PhotosRepositoryImpl(photoApi)
+    }
+
 }

@@ -6,13 +6,13 @@ import com.example.snapfetch.domain.model.toEntity
 import com.example.snapfetch.util.Response
 import javax.inject.Inject
 
-class CurrencyRepositoryImpl @Inject constructor(
-    private val api: PhotosApi
+class PhotosRepositoryImpl @Inject constructor(
+    private val photosApi: PhotosApi
 ) : PhotosRepository {
     override suspend fun getPhotos(
     ): Response<List<Photo>> {
         return try {
-            val result = api.getPhotos().map { it.toEntity() }.requireNoNulls()
+            val result = photosApi.getPhotos().map { it.toEntity() }.requireNoNulls()
             Response.Success(
                 data = result
             )
