@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.toRoute
 import com.example.snapfetch.view.screens.PhotoDetailsScreen
 import com.example.snapfetch.view.screens.PhotosScreen
 import com.example.snapfetch.view.screens.SplashScreen
@@ -20,8 +21,9 @@ fun SetupNavGraph(navController: NavHostController) {
             PhotosScreen()
         }
 
-        composable<Screen.PhotoDetails> {
-            PhotoDetailsScreen()
+        composable<Screen.PhotoDetails> { backStackEntry ->
+            val args = backStackEntry.toRoute<Screen.PhotoDetails>()
+            PhotoDetailsScreen(photoId = args.photoId)
         }
     }
 }

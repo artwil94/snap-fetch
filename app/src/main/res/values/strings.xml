@@ -3,5 +3,5 @@
 
     <string name="photo_id">Photo ID: %s</string>
     <string name="lorem_picsum">Lorem picsum</string>
-    <string name="load_more_photos">Load more photos</string>
+    <string name="load_more">Load more</string>
 </resources>

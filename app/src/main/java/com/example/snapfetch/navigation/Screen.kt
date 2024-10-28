@@ -9,7 +9,7 @@ sealed class Screen {
     data object Photos : Screen()
 
     @Serializable
-    data object PhotoDetails : Screen()
+    data class PhotoDetails(val photoId: String = "") : Screen()
 
     @Serializable
     data object Splash : Screen()

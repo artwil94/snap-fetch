@@ -9,18 +9,33 @@ import javax.inject.Inject
 class PhotosRepositoryImpl @Inject constructor(
     private val photosApi: PhotosApi
 ) : PhotosRepository {
+
     override suspend fun getPhotos(
         page: Int,
         limit: Int
     ): Response<List<Photo>> {
         return try {
             val result =
-                photosApi.getPhotos(page,limit).map { it.toEntity() }.requireNoNulls()
+                photosApi.getPhotos(page, limit).map { it.toEntity() }.requireNoNulls()
             Response.Success(
                 data = result
             )
         } catch (e: Exception) {
             Response.Error(message = "${e.message ?: "Unknown error"} - An issue occurred while fetching photos.")
+        }
+    }
+
+    override suspend fun getPhotoDetails(
+        photoId: String
+    ): Response<Photo> {
+        return try {
+            val result =
+                photosApi.getPhotoDetails(photoId = photoId).toEntity()
+            Response.Success(
+                data = result
+            )
+        } catch (e: Exception) {
+            Response.Error(message = "${e.message ?: "Unknown error"} - An issue occurred while fetching photo details.")
         }
     }
 }

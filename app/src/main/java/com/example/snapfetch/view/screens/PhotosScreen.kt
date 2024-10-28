@@ -27,6 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.snapfetch.R
 import com.example.snapfetch.navigation.LocalNavController
+import com.example.snapfetch.navigation.Screen
 import com.example.snapfetch.ui.theme.SfTheme
 import com.example.snapfetch.view.components.ActionButton
 import com.example.snapfetch.view.components.LoadingScreen
@@ -38,12 +39,12 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun PhotosScreen(viewModel: PhotosViewModel = hiltViewModel()) {
-    val navController = LocalNavController.current
     PhotosScreenContent(uiState = viewModel.uiState, actions = viewModel.actions)
 }
 
 @Composable
 private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) {
+    val navController = LocalNavController.current
     if (uiState.isLoading && uiState.photos.isEmpty()) {
         LoadingScreen()
     } else {
@@ -70,7 +71,9 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
                 state = listState
             ) {
                 items(uiState.photos) { photo ->
-                    PhotoCard(photo = photo)
+                    PhotoCard(
+                        photo = photo,
+                        onClick = { navController.navigate(Screen.PhotoDetails(photo.id ?: "")) })
                     Spacer(modifier = Modifier.height(SfTheme.dimensions.paddingM))
                 }
                 item {
@@ -82,7 +85,7 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
                     } else {
                         ActionButton(
                             modifier = Modifier.padding(bottom = SfTheme.dimensions.paddingL),
-                            text = stringResource(id = R.string.load_more_photos)
+                            text = stringResource(id = R.string.load_more)
                         ) {
                             actions.loadMore()
                             scrollAfterLoadMore = true

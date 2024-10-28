@@ -1,5 +1,6 @@
 package com.example.snapfetch.view.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,7 +19,7 @@ import com.example.snapfetch.domain.model.Photo
 import com.example.snapfetch.ui.theme.SfTheme
 
 @Composable
-fun PhotoCard(modifier: Modifier = Modifier, photo: Photo) {
+fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClick: () -> Unit) {
     Column(
         modifier = modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -28,6 +29,7 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo) {
                 .fillMaxWidth()
                 .clip(shape = SfTheme.shapes.photoCard)
                 .aspectRatio(1.75f)
+                .clickable { onClick.invoke() }
         ) {
             CoilImage(imageUrl = photo.url)
         }
@@ -43,5 +45,5 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo) {
 @Preview(showBackground = true, backgroundColor = 0x000000)
 @Composable
 private fun PhotoCardPreview() {
-    PhotoCard(photo = Photo(id = "0", url = ""))
+    PhotoCard(photo = Photo(id = "0", url = ""), onClick = {})
 }

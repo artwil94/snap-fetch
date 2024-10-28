@@ -2,6 +2,7 @@ package com.example.snapfetch.data.remote
 
 import com.example.snapfetch.data.remote.dtos.PhotoDto
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PhotosApi {
@@ -12,7 +13,7 @@ interface PhotosApi {
         @Query("limit") limit: Int
     ): List<PhotoDto>
 
-//    @GET()
-//    suspend fun getPhotoDetails(photoId: String): PhotoDetailsDto
+    @GET("/id/{id}/info")
+    suspend fun getPhotoDetails(@Path("id") photoId: String): PhotoDto
 
 }
