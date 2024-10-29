@@ -21,12 +21,14 @@ class PhotoDetailsViewModel @Inject constructor(
         private set
 
     val actions = PhotoDetailsActions(
-        start = ::getPhotoDetails
+        start = ::getPhotoDetails,
+        onClose = ::resetError
     )
 
     private fun getPhotoDetails(photoId: String) {
         viewModelScope.launch {
             uiState = uiState.copy(
+                error = false,
                 isLoading = true
             )
             val result = repository.getPhotoDetails(photoId = photoId)
@@ -35,28 +37,36 @@ class PhotoDetailsViewModel @Inject constructor(
                     uiState = uiState.copy(
                         photo = result.data,
                         isLoading = false,
-                        error = null
+                        error = false
                     )
                 }
 
                 is Response.Error -> {
                     uiState = uiState.copy(
                         photo = null,
-                        error = "Photos API response error",
+                        error = true,
                         isLoading = false
                     )
                 }
             }
         }
     }
+
+    private fun resetError() {
+        uiState = uiState.copy(
+            error = false
+        )
+    }
+
 }
 
 data class PhotoDetailsActions(
-    val start: (photoId: String) -> Unit = {}
+    val start: (photoId: String) -> Unit = {},
+    val onClose: () -> Unit
 )
 
 data class PhotoDetailsUIState(
     val isLoading: Boolean = true,
-    val error: String? = null,
+    val error: Boolean = false,
     var photo: Photo? = null
 )

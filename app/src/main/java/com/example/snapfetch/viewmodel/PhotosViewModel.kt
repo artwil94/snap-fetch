@@ -61,7 +61,7 @@ class PhotosViewModel @Inject constructor(
         }
     }
 
-    fun resetError() {
+     private fun resetError() {
         uiState = uiState.copy(
             error = false
         )

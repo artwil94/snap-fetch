@@ -3,14 +3,11 @@ package com.example.snapfetch.view.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -27,6 +24,7 @@ import com.example.snapfetch.domain.model.Photo
 import com.example.snapfetch.navigation.LocalNavController
 import com.example.snapfetch.ui.theme.SfTheme
 import com.example.snapfetch.util.openExternalBrowser
+import com.example.snapfetch.view.components.AlertDialog
 import com.example.snapfetch.view.components.LoadingScreen
 import com.example.snapfetch.view.components.PhotoCard
 import com.example.snapfetch.view.components.PhotoCardType
@@ -123,6 +121,17 @@ private fun PhotoDetailsContent(
             }
         }
     }
+    if (uiState.error) {
+        AlertDialog(
+            body = stringResource(id = R.string.alert_dialog_body),
+            firstActionCTA = stringResource(id = R.string.try_again),
+            onFirstActionClick = { actions.start(photoId) },
+            onSecondActionClick = actions.onClose,
+            secondActionCTA = stringResource(
+                id = R.string.close
+            )
+        )
+    }
 }
 
 @Preview(showBackground = true, backgroundColor = 0xFFFFFF)
@@ -139,6 +148,10 @@ private fun PhotoDetailsScreenPreview() {
         )
     )
     PreviewWrapper {
-        PhotoDetailsContent(uiState = uiState, actions = PhotoDetailsActions(), photoId = "")
+        PhotoDetailsContent(
+            uiState = uiState,
+            actions = PhotoDetailsActions(onClose = {}),
+            photoId = ""
+        )
     }
 }
