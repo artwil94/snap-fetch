@@ -35,6 +35,7 @@ import com.example.snapfetch.navigation.LocalNavController
 import com.example.snapfetch.navigation.Screen
 import com.example.snapfetch.ui.theme.SfTheme
 import com.example.snapfetch.view.components.ActionButton
+import com.example.snapfetch.view.components.AlertDialog
 import com.example.snapfetch.view.components.LoadingScreen
 import com.example.snapfetch.view.components.PhotoCard
 import com.example.snapfetch.viewmodel.PhotosActions
@@ -112,6 +113,17 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
                 }
             }
         }
+    }
+    if (uiState.error) {
+        AlertDialog(
+            body = stringResource(id = R.string.alert_dialog_body),
+            firstActionCTA = stringResource(id = R.string.try_again),
+            onFirstActionClick = actions.onTryAgain,
+            onSecondActionClick = actions.onClose,
+            secondActionCTA = stringResource(
+                id = R.string.close
+            )
+        )
     }
 }
 

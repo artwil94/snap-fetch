@@ -23,7 +23,9 @@ class PhotosViewModel @Inject constructor(
     val actions = PhotosActions(
         loadMore = {
             getPhotos()
-        }
+        },
+        onTryAgain = { getPhotos() },
+        onClose = { resetError() }
     )
     private var currentPage = 1
 
@@ -60,13 +62,21 @@ class PhotosViewModel @Inject constructor(
         }
     }
 
+    fun resetError() {
+        uiState = uiState.copy(
+            error = false
+        )
+    }
+
     companion object {
         const val PHOTOS_LIMIT = 20
     }
 }
 
 data class PhotosActions(
-    val loadMore: () -> Unit
+    val loadMore: () -> Unit,
+    val onTryAgain: () -> Unit,
+    val onClose: () -> Unit
 )
 
 data class PhotosUIState(

@@ -41,4 +41,16 @@ data class SfTypography(
         fontWeight = FontWeight(500),
         textDecoration = TextDecoration.Underline
     ),
+    val alertDialogTitle: TextStyle = TextStyle(
+        fontSize = 24.sp,
+        lineHeight = 28.sp,
+        fontFamily = SfTheme.fonts.robotoBold,
+        fontWeight = FontWeight(700),
+    ),
+    val alertDialogBody: TextStyle = TextStyle(
+        fontSize = 16.sp,
+        lineHeight = 22.sp,
+        fontFamily = SfTheme.fonts.robotoLight,
+        fontWeight = FontWeight(400),
+    ),
 )

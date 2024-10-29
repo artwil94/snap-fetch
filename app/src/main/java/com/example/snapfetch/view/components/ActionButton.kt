@@ -13,14 +13,19 @@ import com.example.snapfetch.R
 import com.example.snapfetch.ui.theme.SfTheme
 
 @Composable
-fun ActionButton(modifier: Modifier = Modifier, text: String, onClick: () -> Unit) {
+fun ActionButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    color: Color = SfTheme.colors.actionButton,
+    onClick: () -> Unit
+) {
     Button(
         onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
             .then(modifier),
         colors = ButtonColors(
-            containerColor = SfTheme.colors.actionButton,
+            containerColor = color,
             contentColor = Color.Black,
             disabledContentColor = SfTheme.colors.actionButton,
             disabledContainerColor = SfTheme.colors.actionButton
