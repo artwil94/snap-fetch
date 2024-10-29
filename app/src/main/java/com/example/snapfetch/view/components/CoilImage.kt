@@ -12,6 +12,7 @@ import com.example.snapfetch.R
 
 @Composable
 fun CoilImage(
+    modifier: Modifier = Modifier,
     imageUrl: String,
     contentDescription: String? = null,
     contentScale: ContentScale = ContentScale.Crop
@@ -23,7 +24,7 @@ fun CoilImage(
 
     AsyncImage(
         model = imageRequest,
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         placeholder = painterResource(id = R.drawable.placeholder_image),
         error = painterResource(id = R.drawable.placeholder_image),
         contentScale = contentScale,

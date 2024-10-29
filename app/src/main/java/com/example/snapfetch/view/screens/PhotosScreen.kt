@@ -68,7 +68,8 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = SfTheme.dimensions.padding),
-                state = listState
+                state = listState,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 items(uiState.photos) { photo ->
                     PhotoCard(
@@ -79,7 +80,7 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
                 item {
                     if (uiState.isLoading) {
                         CircularProgressIndicator(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.align(Alignment.CenterHorizontally),
                             color = Color.White
                         )
                     } else {

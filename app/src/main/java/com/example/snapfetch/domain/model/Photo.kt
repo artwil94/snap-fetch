@@ -4,7 +4,7 @@ import com.example.snapfetch.data.remote.dtos.PhotoDto
 
 data class Photo(
     val id: String? = null,
-    val author: String? = "",
+    val author: String = "",
     val width: Int? = null,
     val height: Int? = null,
     val url: String = "",

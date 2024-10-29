@@ -4,4 +4,12 @@
     <string name="photo_id">Photo ID: %s</string>
     <string name="lorem_picsum">Lorem picsum</string>
     <string name="load_more">Load more</string>
+
+    <!-- Photo Details -->
+    <string name="author">Author:</string>
+    <string name="format">Format:</string>
+    <string name="download_url">Download url:</string>
+
+    <!-- Content Description -->
+    <string name="content_description_back">Navigate back</string>
 </resources>
