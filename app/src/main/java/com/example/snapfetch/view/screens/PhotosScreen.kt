@@ -2,6 +2,7 @@ package com.example.snapfetch.view.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -49,12 +50,21 @@ fun PhotosScreen(viewModel: PhotosViewModel = hiltViewModel()) {
 @Composable
 private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) {
     val navController = LocalNavController.current
+    val listState = rememberLazyListState()
+    val coroutineScope = rememberCoroutineScope()
+    var scrollAfterLoadMore by remember { mutableStateOf(false) }
+    LaunchedEffect(uiState.photos.size) {
+        if (uiState.photos.isNotEmpty() && scrollAfterLoadMore) {
+            coroutineScope.launch {
+                val targetIndex =
+                    (listState.firstVisibleItemIndex + 2).coerceAtMost(uiState.photos.size - 1)
+                listState.animateScrollToItem(targetIndex)
+            }
+        }
+    }
     if (uiState.isLoading && uiState.photos.isEmpty()) {
         LoadingScreen()
     } else {
-        val listState = rememberLazyListState()
-        val coroutineScope = rememberCoroutineScope()
-        var scrollAfterLoadMore by remember { mutableStateOf(false) }
         val photoCount = uiState.photos.size
         Column(
             modifier = Modifier
@@ -69,25 +79,7 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
                 style = SfTheme.typography.screenTitle
             )
             Spacer(modifier = Modifier.height(SfTheme.dimensions.paddingS))
-            Text(
-                modifier = Modifier
-                    .align(Alignment.End)
-                    .padding(end = SfTheme.dimensions.padding),
-                text = buildAnnotatedString {
-                    append(stringResource(id = R.string.loaded_photos))
-                    append("  ")
-                    withStyle(
-                        style = SpanStyle(
-                            color = SfTheme.colors.highlightedColor,
-                            fontWeight = FontWeight.Bold
-                        )
-                    ) {
-                        append(photoCount.toString())
-                    }
-                },
-                style = SfTheme.typography.photoDetailSubtitle,
-                color = SfTheme.colors.primaryTextGray
-            )
+            PhotosCounter(photoCount = photoCount)
             Spacer(modifier = Modifier.height(SfTheme.dimensions.paddingL))
             LazyColumn(
                 modifier = Modifier
@@ -120,14 +112,28 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
                 }
             }
         }
-        LaunchedEffect(uiState.photos.size) {
-            if (uiState.photos.isNotEmpty() && scrollAfterLoadMore) {
-                coroutineScope.launch {
-                    val targetIndex =
-                        (listState.firstVisibleItemIndex + 2).coerceAtMost(uiState.photos.size - 1)
-                    listState.animateScrollToItem(targetIndex)
-                }
-            }
-        }
     }
+}
+
+@Composable
+private fun ColumnScope.PhotosCounter(photoCount: Int) {
+    Text(
+        modifier = Modifier
+            .align(Alignment.End)
+            .padding(end = SfTheme.dimensions.padding),
+        text = buildAnnotatedString {
+            append(stringResource(id = R.string.loaded_photos))
+            append("  ")
+            withStyle(
+                style = SpanStyle(
+                    color = SfTheme.colors.highlightedColor,
+                    fontWeight = FontWeight.Bold
+                )
+            ) {
+                append(photoCount.toString())
+            }
+        },
+        style = SfTheme.typography.photoDetailSubtitle,
+        color = SfTheme.colors.primaryTextGray
+    )
 }
