@@ -8,5 +8,6 @@ data class SfColors(
     val photoDetailsScreen: Color = Color(0xFF2D2E32),
     val primaryTextGray: Color = Color(0xFFAAAAAA),
     val actionButton: Color = Color(0xFFA99AF4),
-    val highlightedColor: Color = Color.White
+    val highlightedColor: Color = Color.White,
+    val error: Color = Color(0xFFF8326A)
 )

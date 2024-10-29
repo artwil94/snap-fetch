@@ -1,17 +1,21 @@
 package com.example.snapfetch.view.components
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +32,7 @@ fun AlertDialog(
     secondActionCTA: String? = null,
     onFirstActionClick: () -> Unit = {},
     onSecondActionClick: () -> Unit = {},
+    @DrawableRes titleIcon: Int? = null,
     onDismiss: () -> Unit = { if (secondActionCTA == null) onFirstActionClick.invoke() else onSecondActionClick.invoke() }
 ) {
     Dialog(
@@ -40,7 +45,7 @@ fun AlertDialog(
         Box(
             modifier = Modifier
                 .background(
-                    color = SfTheme.colors.photoDetailsScreen,
+                    color = Color.White,
                     shape = SfTheme.shapes.photoCard
                 )
         ) {
@@ -51,11 +56,22 @@ fun AlertDialog(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 title?.let { title ->
-                    Text(
-                        text = title,
-                        style = SfTheme.typography.alertDialogTitle,
-                        color = Color.Black
-                    )
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        if (titleIcon != null) {
+                            Icon(
+                                modifier = Modifier.padding(end = SfTheme.dimensions.paddingS),
+                                painter = painterResource(id = titleIcon),
+                                contentDescription = null,
+                                tint = SfTheme.colors.error
+                            )
+                        }
+                        Text(
+                            text = title,
+                            style = SfTheme.typography.alertDialogTitle,
+                            color = Color.Black
+                        )
+                    }
+
                 }
                 body?.let { body ->
                     Spacer(modifier = Modifier.height(SfTheme.dimensions.padding))

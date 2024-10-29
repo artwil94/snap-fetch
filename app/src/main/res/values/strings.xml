@@ -6,6 +6,9 @@
     <string name="lorem_picsum">Lorem picsum</string>
     <string name="loaded_photos">Loaded photos:</string>
     <string name="load_more">Load more</string>
+    <string name="load_photos">Load photos</string>
+    <string name="no_network">No network!</string>
+    <string name="no_network_message">Check your internet connection</string>
     <string name="alert_dialog_body">Something wrong with fetching photo</string>
     <string name="try_again">Try again</string>
     <string name="close">Close</string>

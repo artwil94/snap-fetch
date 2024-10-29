@@ -21,6 +21,9 @@ class PhotosViewModel @Inject constructor(
         private set
 
     val actions = PhotosActions(
+        start = {
+            getPhotos()
+        },
         loadMore = {
             getPhotos()
         },
@@ -28,10 +31,6 @@ class PhotosViewModel @Inject constructor(
         onClose = { resetError() }
     )
     private var currentPage = 1
-
-    init {
-        getPhotos()
-    }
 
     internal fun getPhotos() {
         viewModelScope.launch {
@@ -74,6 +73,7 @@ class PhotosViewModel @Inject constructor(
 }
 
 data class PhotosActions(
+    val start: () -> Unit,
     val loadMore: () -> Unit,
     val onTryAgain: () -> Unit,
     val onClose: () -> Unit
