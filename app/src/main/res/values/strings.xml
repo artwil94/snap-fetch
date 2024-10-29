@@ -7,7 +7,7 @@
 
     <!-- Photo Details -->
     <string name="author">Author:</string>
-    <string name="format">Format:</string>
+    <string name="format">Format (width x height):</string>
     <string name="download_url">Download URL:</string>
 
     <!-- Content Description -->

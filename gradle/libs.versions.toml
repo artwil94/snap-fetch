@@ -19,6 +19,8 @@ loggingInterceptorVersion = "5.0.0-alpha.14"
 converterMoshiVersion = "2.9.0"
 coil = "2.7.0"
 lottieCompose = "6.1.0"
+mockkVersion = "1.12.4"
+kotlinxCoroutinesTestVersion = "1.6.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,6 +50,8 @@ converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshiVersion" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTestVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

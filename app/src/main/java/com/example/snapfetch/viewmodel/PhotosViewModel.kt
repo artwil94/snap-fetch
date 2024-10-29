@@ -31,9 +31,10 @@ class PhotosViewModel @Inject constructor(
         getPhotos()
     }
 
-    private fun getPhotos() {
+    internal fun getPhotos() {
         viewModelScope.launch {
             uiState = uiState.copy(
+                error = false,
                 isLoading = true
             )
             val result = repository.getPhotos(page = currentPage, limit = PHOTOS_LIMIT)
@@ -43,7 +44,7 @@ class PhotosViewModel @Inject constructor(
                     uiState = uiState.copy(
                         photos = uiState.photos + newPhotos,
                         isLoading = false,
-                        error = null
+                        error = false
                     )
                     currentPage++
                 }
@@ -51,7 +52,7 @@ class PhotosViewModel @Inject constructor(
                 is Response.Error -> {
                     uiState = uiState.copy(
                         photos = listOf(),
-                        error = "Photos API response error",
+                        error = true,
                         isLoading = false
                     )
                 }
@@ -70,6 +71,6 @@ data class PhotosActions(
 
 data class PhotosUIState(
     val isLoading: Boolean = true,
-    val error: String? = null,
+    val error: Boolean = false,
     var photos: List<Photo> = listOf(),
 )

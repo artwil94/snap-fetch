@@ -41,12 +41,13 @@ fun PhotoDetailItem(
             tint = SfTheme.colors.actionButton
         )
         Text(
-            modifier = Modifier.padding(start = SfTheme.dimensions.paddingS),
+            modifier = Modifier.padding(start = SfTheme.dimensions.paddingS).weight(1f),
             text = subtitle,
             style = subtitleTextStyle,
             color = SfTheme.colors.primaryTextGray,
             maxLines = 1
         )
+
         Text(
             modifier = Modifier
                 .clickable(onClick = { onValueClick.invoke() }, enabled = clickableValue)
