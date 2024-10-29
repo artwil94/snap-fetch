@@ -8,7 +8,7 @@
     <!-- Photo Details -->
     <string name="author">Author:</string>
     <string name="format">Format:</string>
-    <string name="download_url">Download url:</string>
+    <string name="download_url">Download URL:</string>
 
     <!-- Content Description -->
     <string name="content_description_back">Navigate back</string>

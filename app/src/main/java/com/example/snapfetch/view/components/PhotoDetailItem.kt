@@ -16,7 +16,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import com.example.snapfetch.R
 import com.example.snapfetch.ui.theme.SfTheme
 
@@ -26,7 +25,6 @@ fun PhotoDetailItem(
     value: String,
     subtitle: String,
     @DrawableRes icon: Int,
-    iconSize: Dp = SfTheme.dimensions.photoDetailIconSize,
     textStyle: TextStyle = SfTheme.typography.photoDetailSubtitle,
     subtitleTextStyle: TextStyle = SfTheme.typography.photoDetailSubtitle,
     clickableValue: Boolean = false,
@@ -37,7 +35,7 @@ fun PhotoDetailItem(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            modifier = modifier.size(iconSize),
+            modifier = modifier.size(SfTheme.dimensions.photoDetailIconSize),
             painter = painterResource(id = icon),
             contentDescription = null,
             tint = SfTheme.colors.actionButton
@@ -52,8 +50,7 @@ fun PhotoDetailItem(
         Text(
             modifier = Modifier
                 .clickable(onClick = { onValueClick.invoke() }, enabled = clickableValue)
-                .padding(start = SfTheme.dimensions.paddingS)
-                .weight(1f),
+                .padding(start = SfTheme.dimensions.paddingS),
             text = value,
             style = textStyle,
             color = Color.White,

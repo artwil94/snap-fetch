@@ -81,14 +81,18 @@ private fun PhotoDetailsContent(
                             .background(color = Color(0xFF2d2e32), shape = SfTheme.shapes.photoCard)
 
                     ) {
-                        Column(modifier = Modifier.padding(SfTheme.dimensions.padding)) {
+                        Column(
+                            modifier = Modifier.padding(
+                                horizontal = SfTheme.dimensions.padding,
+                                vertical = SfTheme.dimensions.paddingM
+                            )
+                        ) {
                             Spacer(modifier = Modifier.height(SfTheme.dimensions.paddingS))
                             PhotoDetailItem(
                                 value = photo.author,
                                 subtitle = stringResource(id = R.string.author),
                                 icon = R.drawable.ic_author,
-                                textStyle = SfTheme.typography.author,
-                                iconSize = SfTheme.dimensions.authorIconSize
+                                textStyle = SfTheme.typography.author
                             )
                             Spacer(modifier = Modifier.height(SfTheme.dimensions.paddingM))
                             PhotoDetailItem(

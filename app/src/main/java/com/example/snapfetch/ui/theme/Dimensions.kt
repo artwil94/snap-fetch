@@ -9,6 +9,5 @@ data class SfDimensions(
     val paddingM: Dp = 24.dp,
     val paddingL: Dp = 32.dp,
     val splashAnimationSize: Dp = 200.dp,
-    val authorIconSize: Dp = 24.dp,
-    val photoDetailIconSize: Dp = 16.dp,
+    val photoDetailIconSize: Dp = 24.dp,
 )
