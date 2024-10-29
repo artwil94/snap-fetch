@@ -24,6 +24,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.snapfetch.R
 import com.example.snapfetch.navigation.LocalNavController
@@ -51,6 +55,7 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
         val listState = rememberLazyListState()
         val coroutineScope = rememberCoroutineScope()
         var scrollAfterLoadMore by remember { mutableStateOf(false) }
+        val photoCount = uiState.photos.size
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -62,6 +67,26 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
             Text(
                 text = stringResource(id = R.string.lorem_picsum).uppercase(),
                 style = SfTheme.typography.screenTitle
+            )
+            Spacer(modifier = Modifier.height(SfTheme.dimensions.paddingS))
+            Text(
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .padding(end = SfTheme.dimensions.padding),
+                text = buildAnnotatedString {
+                    append(stringResource(id = R.string.loaded_photos))
+                    append("  ")
+                    withStyle(
+                        style = SpanStyle(
+                            color = SfTheme.colors.highlightedColor,
+                            fontWeight = FontWeight.Bold
+                        )
+                    ) {
+                        append(photoCount.toString())
+                    }
+                },
+                style = SfTheme.typography.photoDetailSubtitle,
+                color = SfTheme.colors.primaryTextGray
             )
             Spacer(modifier = Modifier.height(SfTheme.dimensions.paddingL))
             LazyColumn(

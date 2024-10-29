@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">SnapFetch</string>
 
+    <!-- Photos List -->
     <string name="photo_id">Photo ID: %s</string>
     <string name="lorem_picsum">Lorem picsum</string>
+    <string name="loaded_photos">Loaded photos:</string>
     <string name="load_more">Load more</string>
 
     <!-- Photo Details -->

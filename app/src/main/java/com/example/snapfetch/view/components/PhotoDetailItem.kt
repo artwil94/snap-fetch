@@ -1,7 +1,12 @@
+@file:OptIn(ExperimentalLayoutApi::class)
+
 package com.example.snapfetch.view.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.snapfetch.R
 import com.example.snapfetch.ui.theme.SfTheme
@@ -40,14 +46,18 @@ fun PhotoDetailItem(
             contentDescription = null,
             tint = SfTheme.colors.actionButton
         )
-        Text(
-            modifier = Modifier.padding(start = SfTheme.dimensions.paddingS).weight(1f),
-            text = subtitle,
-            style = subtitleTextStyle,
-            color = SfTheme.colors.primaryTextGray,
-            maxLines = 1
-        )
-
+        Box(modifier = Modifier.weight(1f)) {
+            Text(
+                modifier = Modifier
+//                    .weight(1f)
+                    .padding(start = SfTheme.dimensions.paddingS),
+                text = subtitle,
+                style = subtitleTextStyle,
+                textAlign = TextAlign.Center,
+                color = SfTheme.colors.primaryTextGray,
+                maxLines = 2,
+            )
+        }
         Text(
             modifier = Modifier
                 .clickable(onClick = { onValueClick.invoke() }, enabled = clickableValue)
