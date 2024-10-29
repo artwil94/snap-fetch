@@ -72,6 +72,7 @@ class PhotosRepositoryImplTest {
 
         coVerify { photosApi.getPhotos(page = 1, limit = 20) }
     }
+
     @Test
     fun `getPhotos  returns empty list on empty API response`() = runTest {
         val mockPhotos = emptyList<PhotoDto>()
@@ -85,6 +86,7 @@ class PhotosRepositoryImplTest {
 
         coVerify { photosApi.getPhotos(page = 1, limit = 20) }
     }
+
     @Test
     fun `getPhotoDetails returns success when API returns data`() = runTest {
         val mockPhoto = PhotoDto(
@@ -98,9 +100,15 @@ class PhotosRepositoryImplTest {
         coEvery { photosApi.getPhotoDetails(photoId = "1") } returns mockPhoto
 
         val result = repository.getPhotoDetails(photoId = "1")
+        val photo = result.data!!
 
-        assert(result is Response.Success)
-        assertEquals((result as Response.Success).data, mockPhoto)
+        assertTrue(result is Response.Success)
+        assertEquals(photo.id, mockPhoto.id)
+        assertEquals(photo.author, mockPhoto.author)
+        assertEquals(photo.width, mockPhoto.width)
+        assertEquals(photo.height, mockPhoto.height)
+        assertEquals(photo.url, mockPhoto.url)
+        assertEquals(photo.downloadUrl, mockPhoto.downloadUrl)
 
         coVerify { photosApi.getPhotoDetails(photoId = "1") }
     }
