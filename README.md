@@ -43,7 +43,13 @@ To set up the project locally, follow these steps:
 - **Jetpack Compose**: Used for build UI
 - **Coroutines and Flow**: For asynchronous operations.
 - **Retrofit**: For making API calls
-- **Coil**: For image loading from network
+- **Coil**: For image loading from the network
 - **Hilt Dagger**: Used for dependency injection
 - **JUnit and MockK**: For unit testing.
 - **Timber**: For logging
+
+## UX/UI
+
+<img width="308" alt="Screenshot1" src="https://github.com/user-attachments/assets/d3a3c506-7f69-4c82-bbc1-813dce936bfc">
+<img width="307" alt="Screenshot2" src="https://github.com/user-attachments/assets/bd8d4c25-4a36-4a7f-8295-4fcab6caf680">
+<img width="307" alt="Screenshot2" src="https://github.com/user-attachments/assets/01e5efc4-1a59-4384-8417-19707d71efdf">
