@@ -7,7 +7,6 @@ import com.example.snapfetch.domain.repository.PhotosRepository
 import com.example.snapfetch.util.Response
 import io.mockk.coEvery
 import io.mockk.mockk
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -22,7 +21,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
-@OptIn(DelicateCoroutinesApi::class)
 class PhotosViewModelTest {
 
     private lateinit var repository: PhotosRepository

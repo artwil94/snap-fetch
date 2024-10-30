@@ -16,7 +16,7 @@
     <!-- Photo Details -->
     <string name="author">Author:</string>
     <string name="format">Format (width x height):</string>
-    <string name="download_url">Download URL:</string>
+    <string name="download_url">Download:</string>
 
     <!-- Content Description -->
     <string name="content_description_back">Navigate back</string>

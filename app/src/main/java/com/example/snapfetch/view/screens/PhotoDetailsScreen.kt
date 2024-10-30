@@ -101,7 +101,7 @@ private fun PhotoDetailsContent(
                                 subtitle = stringResource(id = R.string.format),
                                 icon = R.drawable.ic_dimensions
                             )
-                            Spacer(modifier = Modifier.height(SfTheme.dimensions.padding))
+                            Spacer(modifier = Modifier.height(SfTheme.dimensions.paddingM))
                             PhotoDetailItem(
                                 value = photo.downloadUrl,
                                 subtitle = stringResource(id = R.string.download_url),
