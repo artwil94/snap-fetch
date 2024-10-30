@@ -68,7 +68,9 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
     var showNoNetworkAlert by remember { mutableStateOf(false) }
 
     LaunchedEffect(key1 = Unit) {
-        actions.start()
+        if (uiState.photos.isEmpty()) {
+            actions.start()
+        }
     }
 
     LaunchedEffect(key1 = isNoNetwork) {

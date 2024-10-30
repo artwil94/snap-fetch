@@ -30,7 +30,7 @@ class PhotosViewModel @Inject constructor(
         onTryAgain = { getPhotos() },
         onClose = { resetError() }
     )
-    private var currentPage = 1
+    internal var currentPage = 1
 
     internal fun getPhotos() {
         viewModelScope.launch {
@@ -61,7 +61,7 @@ class PhotosViewModel @Inject constructor(
         }
     }
 
-     private fun resetError() {
+    private fun resetError() {
         uiState = uiState.copy(
             error = false
         )
