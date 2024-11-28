@@ -82,5 +82,5 @@ data class PhotosActions(
 data class PhotosUIState(
     val isLoading: Boolean = true,
     val error: Boolean = false,
-    var photos: List<Photo> = listOf(),
+    val photos: List<Photo> = listOf(),
 )

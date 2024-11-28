@@ -68,5 +68,5 @@ data class PhotoDetailsActions(
 data class PhotoDetailsUIState(
     val isLoading: Boolean = true,
     val error: Boolean = false,
-    var photo: Photo? = null
+    val photo: Photo? = null
 )
