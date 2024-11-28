@@ -73,7 +73,6 @@ object SfTheme {
 
 data class Fonts(
     val freigeistMedium: FontFamily = FontFamily(Font(R.font.freigeist_xconmedium)),
-    val freigeistBold: FontFamily = FontFamily(Font(R.font.freigeist_xconbold)),
     val robotoMedium: FontFamily = FontFamily(Font(R.font.roboto_medium)),
     val robotoBold: FontFamily = FontFamily(Font(R.font.roboto_bold)),
     val robotoLight: FontFamily = FontFamily(Font(R.font.roboto_light)),

@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,7 +39,6 @@ import com.example.snapfetch.navigation.Screen
 import com.example.snapfetch.network.ConnectivityObserver
 import com.example.snapfetch.network.NetworkConnectivityObserver
 import com.example.snapfetch.ui.theme.SfTheme
-import com.example.snapfetch.view.components.ActionButton
 import com.example.snapfetch.view.components.AlertDialog
 import com.example.snapfetch.view.components.LoadingScreen
 import com.example.snapfetch.view.components.PhotoCard
@@ -70,6 +70,20 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
     LaunchedEffect(key1 = Unit) {
         if (uiState.photos.isEmpty()) {
             actions.start()
+        }
+    }
+
+    val shouldLoadMore = remember {
+        derivedStateOf {
+            val lastVisibleItemIndex = listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index
+            val totalItemsCount = listState.layoutInfo.totalItemsCount
+            lastVisibleItemIndex != null && lastVisibleItemIndex >= totalItemsCount - 3
+        }
+    }
+
+    LaunchedEffect(shouldLoadMore.value) {
+        if (shouldLoadMore.value && uiState.photos.isEmpty().not()) {
+            actions.loadMore()
         }
     }
 
@@ -124,15 +138,6 @@ private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) 
                             modifier = Modifier.align(Alignment.CenterHorizontally),
                             color = Color.White
                         )
-                    } else {
-                        ActionButton(
-                            modifier = Modifier.padding(bottom = SfTheme.dimensions.paddingL),
-                            text = if (uiState.photos.isEmpty()) stringResource(id = R.string.load_photos) else
-                                stringResource(id = R.string.load_more)
-                        ) {
-                            actions.loadMore()
-                            scrollAfterLoadMore = true
-                        }
                     }
                 }
             }
