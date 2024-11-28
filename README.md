@@ -33,7 +33,7 @@ To set up the project locally, follow these steps:
 ## Usage
 
 1. **View Photos**: Open the app to see the list of photos. Each item displays the photo and its ID.
-2. **Refresh List**: Tap the refresh button to load a new set of 20 photos.
+2. **Automatic Refreshing List**:  As you scroll to the bottom of the list, a new set of 20 photos loads automatically, ensuring a seamless browsing experience.
 3. **View Details:**: Tap any photo to navigate to a details screen with more information about the photo, including ID, author, dimensions, and a download URL.
 
 ## Technology Stack
