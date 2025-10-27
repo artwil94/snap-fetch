@@ -1,4 +1,4 @@
-package com.example.snapfetch.view.screens
+package com.example.snapfetch.ui.view.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

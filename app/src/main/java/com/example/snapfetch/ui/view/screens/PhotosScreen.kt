@@ -1,4 +1,4 @@
-package com.example.snapfetch.view.screens
+package com.example.snapfetch.ui.view.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -39,9 +39,9 @@ import com.example.snapfetch.navigation.Screen
 import com.example.snapfetch.network.ConnectivityObserver
 import com.example.snapfetch.network.NetworkConnectivityObserver
 import com.example.snapfetch.ui.theme.SfTheme
-import com.example.snapfetch.view.components.AlertDialog
-import com.example.snapfetch.view.components.LoadingScreen
-import com.example.snapfetch.view.components.PhotoCard
+import com.example.snapfetch.ui.view.components.AlertDialog
+import com.example.snapfetch.ui.view.components.LoadingScreen
+import com.example.snapfetch.ui.view.components.PhotoCard
 import com.example.snapfetch.viewmodel.PhotosActions
 import com.example.snapfetch.viewmodel.PhotosUIState
 import com.example.snapfetch.viewmodel.PhotosViewModel
@@ -54,6 +54,7 @@ fun PhotosScreen(viewModel: PhotosViewModel = hiltViewModel()) {
 
 @Composable
 private fun PhotosScreenContent(uiState: PhotosUIState, actions: PhotosActions) {
+
     val navController = LocalNavController.current
     val context = LocalContext.current
     val listState = rememberLazyListState()

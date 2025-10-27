@@ -5,7 +5,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.navigation.compose.rememberNavController
 import com.example.snapfetch.navigation.LocalNavController
 
-
 @Composable
 fun PreviewWrapper(content: @Composable () -> Unit) {
     CompositionLocalProvider(

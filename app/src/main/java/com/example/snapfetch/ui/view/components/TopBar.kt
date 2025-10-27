@@ -1,4 +1,4 @@
-package com.example.snapfetch.view.components
+package com.example.snapfetch.ui.view.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable

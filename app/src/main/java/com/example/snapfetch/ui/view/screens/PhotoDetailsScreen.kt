@@ -1,4 +1,4 @@
-package com.example.snapfetch.view.screens
+package com.example.snapfetch.ui.view.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -24,12 +24,12 @@ import com.example.snapfetch.domain.model.Photo
 import com.example.snapfetch.navigation.LocalNavController
 import com.example.snapfetch.ui.theme.SfTheme
 import com.example.snapfetch.util.openExternalBrowser
-import com.example.snapfetch.view.components.AlertDialog
-import com.example.snapfetch.view.components.LoadingScreen
-import com.example.snapfetch.view.components.PhotoCard
-import com.example.snapfetch.view.components.PhotoCardType
-import com.example.snapfetch.view.components.PhotoDetailItem
-import com.example.snapfetch.view.components.TopBar
+import com.example.snapfetch.ui.view.components.AlertDialog
+import com.example.snapfetch.ui.view.components.LoadingScreen
+import com.example.snapfetch.ui.view.components.PhotoCard
+import com.example.snapfetch.ui.view.components.PhotoCardType
+import com.example.snapfetch.ui.view.components.PhotoDetailItem
+import com.example.snapfetch.ui.view.components.TopBar
 import com.example.snapfetch.viewmodel.PhotoDetailsActions
 import com.example.snapfetch.viewmodel.PhotoDetailsUIState
 import com.example.snapfetch.viewmodel.PhotoDetailsViewModel

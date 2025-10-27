@@ -5,9 +5,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
-import com.example.snapfetch.view.screens.PhotoDetailsScreen
-import com.example.snapfetch.view.screens.PhotosScreen
-import com.example.snapfetch.view.screens.SplashScreen
+import com.example.snapfetch.ui.view.screens.PhotoDetailsScreen
+import com.example.snapfetch.ui.view.screens.PhotosScreen
+import com.example.snapfetch.ui.view.screens.SplashScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController) {

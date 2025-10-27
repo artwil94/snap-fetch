@@ -1,4 +1,4 @@
-package com.example.snapfetch.view.components
+package com.example.snapfetch.ui.view.components
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable

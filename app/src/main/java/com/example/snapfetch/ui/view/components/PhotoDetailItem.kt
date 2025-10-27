@@ -1,12 +1,11 @@
 @file:OptIn(ExperimentalLayoutApi::class)
 
-package com.example.snapfetch.view.components
+package com.example.snapfetch.ui.view.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

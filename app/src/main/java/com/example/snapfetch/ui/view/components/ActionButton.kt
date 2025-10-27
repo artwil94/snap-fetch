@@ -1,4 +1,4 @@
-package com.example.snapfetch.view.components
+package com.example.snapfetch.ui.view.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
